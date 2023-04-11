@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from myproject import views
 
 urlpatterns = [
+    path('', views.mi_vista),
     path('admin/', admin.site.urls),
+    path("mi-primer-template/", views.mi_primer_template),
 ]

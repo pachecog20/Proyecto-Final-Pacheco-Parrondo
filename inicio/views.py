@@ -3,25 +3,14 @@ from datetime import datetime
 from django.http import HttpResponse
 from django.template import Template,Context, loader 
 from inicio.models import Curso
+from django.shortcuts import render
 
 
 
 def mi_vista(request):
-    return HttpResponse("<h1>Que se destangue,terre terre terremoto pa tu cola</h1>")
+    return HttpResponse("<h1>Esta es la vista principal</h1>")
 
-def mi_primer_template(request):
-    
-    archivo = open(r"C:\Users\RAMIP\Desktop\proyecto3\proyecto-django\templates\mi_primer_template.html", "r")
-    
-    template = Template(archivo.read())
-    
-    archivo.close()
-    
-    contexto = Context()
-    
-    template_renderizado = template.render(contexto)
-    
-    return HttpResponse(template_renderizado)
+
     
 def mostrar_fecha(request):
          
@@ -29,7 +18,7 @@ def mostrar_fecha(request):
     
         dt_formateado = dt.strftime("%A %d %B %Y %I:%M")
     
-        template = loader.get_template(r"mostrar_fecha.html")
+        template = loader.get_template(r"inicio/mostrar_fecha.html")
         
         template_renderizado = template.render({"fecha": dt_formateado})
         
@@ -43,7 +32,7 @@ def prueba_template(request):
             "edad": 20,    
         }
          
-        template = loader.get_template(r"prueba_template.html")
+        template = loader.get_template(r"inicio/prueba_template.html")
         
         template_renderizado = template.render(datos)
         
@@ -59,9 +48,21 @@ def crear_curso(request):
     
     datos = {"curso": curso} 
 
-    template = loader.get_template(r"crear_curso.html")
+    template = loader.get_template(r"inicio/crear_curso.html")
         
     template_renderizado = template.render(datos)
         
     return HttpResponse(template_renderizado)
     
+    
+def prueba_render(request):
+    
+    datos = {"nombre": "pepe"}
+    
+    # template = loader.get_template(r"prueba_render.html")
+        
+    # template_renderizado = template.render(datos)
+        
+    # return HttpResponse(template_renderizado)
+
+    return render(request, r"inicio/prueba_render.html", datos)

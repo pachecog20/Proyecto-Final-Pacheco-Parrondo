@@ -8,7 +8,7 @@ from django.shortcuts import render
 
 
 def mi_vista(request):
-    return HttpResponse("<h1>Esta es la vista principal</h1>")
+    return render(request, "inicio/index.html")
 
 
     

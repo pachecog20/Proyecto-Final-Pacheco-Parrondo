@@ -4,9 +4,9 @@ from inicio import views
 # app_name = "inicio"
 
 urlpatterns = [
-    path('', views.mi_vista, name ='inicio'),
-    path("mostrar-fecha/", views.mostrar_fecha, name ="mostrar_fecha"),
-    path("prueba-template/", views.prueba_template, name ="prueba_template"),
-    path("crear-curso/", views.crear_curso, name ="crear_curso"),
-    path("prueba-render/", views.prueba_render, name ="prueba_render"),
+    path('inicio/', views.inicio, name ='Inicio'),
+    path("mostrar-fecha/", views.mostrar_fecha, name ="MostrarFecha"),
+    path("estudiantes/", views.estudiantes, name ="Estudiantes"),
+    path("Cursos/", views.cursos, name ="Cursos"),
+    path("profesores/", views.profesores, name ="Profesores"),
 ]

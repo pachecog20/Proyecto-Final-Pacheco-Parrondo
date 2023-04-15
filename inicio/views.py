@@ -7,8 +7,8 @@ from django.shortcuts import render
 
 
 
-def mi_vista(request):
-    return render(request, "inicio/index.html")
+def inicio(request):
+    return render(request, "inicio/inicio.html")
 
 
     
@@ -24,7 +24,7 @@ def mostrar_fecha(request):
         
         return HttpResponse(template_renderizado)
     
-def prueba_template(request):
+def estudiantes(request):
         
         datos ={
             "nombre": "Geronimo",
@@ -32,14 +32,14 @@ def prueba_template(request):
             "edad": 20,    
         }
          
-        template = loader.get_template(r"inicio/prueba_template.html")
+        template = loader.get_template(r"inicio/estudiantes.html")
         
         template_renderizado = template.render(datos)
         
         return HttpResponse(template_renderizado)
     
     
-def crear_curso(request):
+def cursos(request):
     
     curso = Curso(nombre="CoderHouse",camada= 333)
     print(curso.nombre)
@@ -48,14 +48,14 @@ def crear_curso(request):
     
     datos = {"curso": curso} 
 
-    template = loader.get_template(r"inicio/crear_curso.html")
+    template = loader.get_template(r"inicio/cursos.html")
         
     template_renderizado = template.render(datos)
         
     return HttpResponse(template_renderizado)
     
     
-def prueba_render(request):
+def profesores(request):
     
     datos = {"nombre": "pepe"}
     
@@ -65,4 +65,4 @@ def prueba_render(request):
         
     # return HttpResponse(template_renderizado)
 
-    return render(request, r"inicio/prueba_render.html", datos)
+    return render(request, r"inicio/profesores.html", datos)

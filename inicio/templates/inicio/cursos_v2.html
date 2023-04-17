@@ -1,0 +1,27 @@
+{% extends 'genericos/base.html' %}
+
+{% block title_head %}
+<title>Cursos</title>
+{% endblock title_head %}
+
+{% block h1_header  %}
+<h1> Crear cursos </h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+<form action={% url 'Cursos' %} method="POST">
+    {% csrf_token %}
+    <p> 
+       Ingrese cursos: 
+       <input type="text" name="curso" placeholder= "Coder"> 
+    </p>
+    <p> 
+        Ingrese camada: 
+        <input type="number" name="camada" placeholder= "Nro camada"> 
+     </p>
+
+     <button>Crear</button>
+    
+    
+</form>
+{% endblock contenido %}

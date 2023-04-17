@@ -22,11 +22,11 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href={% url 'Inicio' %}>Inicio</a>
-                <a class="navbar-brand" href={% url 'Cursos' %}>Cursos</a>
-                <a class="navbar-brand" href={% url 'Profesores' %}>Profesores</a>
-                <a class="navbar-brand" href={% url 'Estudiantes' %}>Estudiantes</a>
-                <a class="navbar-brand" href={% url 'MostrarFecha' %}>Mostrar Fecha</a>
+                <a class="navbar-brand" href="{% url 'inicio:Menu' %}">Menu</a>
+                <a class="navbar-brand" href="{% url 'inicio:Cursos' %}">Cursos</a>
+                <a class="navbar-brand" href="{% url 'inicio:Profesores' %}">Profesores</a>
+                <a class="navbar-brand" href="{% url 'inicio:Estudiantes' %}">Estudiantes</a>
+                <a class="navbar-brand" href="{% url 'inicio:MostrarFecha' %}">Mostrar Fecha</a>
             </div>
         </nav>
         <!-- Masthead-->
@@ -62,6 +62,9 @@
                 </div>
             </div>
         </header>
+        {% block contenido %}
+        {% endblock contenido %}
+                            
         <!-- Icons Grid-->
         <!-- Image Showcases-->
         <!-- Testimonials-->

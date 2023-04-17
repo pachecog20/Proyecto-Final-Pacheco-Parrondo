@@ -7,8 +7,8 @@ from django.shortcuts import render
 
 
 
-def inicio(request):
-    return render(request, "inicio/inicio.html")
+def menu(request):
+    return render(request, "inicio/menu.html")
 
 
     
@@ -38,22 +38,29 @@ def estudiantes(request):
         
         return HttpResponse(template_renderizado)
     
+   
+#v1 def cursos(request):
+    
+   # curso = Curso(nombre="CoderHouse",camada= 333)
+    #print(curso.nombre)
+    #print(curso.camada)
+    #curso.save()
+    
+   # datos = {"curso": curso} 
+
+    #template = loader.get_template(r"inicio/cursos.html")
+        
+    #template_renderizado = template.render(datos)
+        
+    #return HttpResponse(template_renderizado)
+    
     
 def cursos(request):
-    
-    curso = Curso(nombre="CoderHouse",camada= 333)
-    print(curso.nombre)
-    print(curso.camada)
+    #print(request.POST)
+    curso = Curso(nombre=request.POST["curso"], camada= request.POST["camada"])
     curso.save()
     
-    datos = {"curso": curso} 
-
-    template = loader.get_template(r"inicio/cursos.html")
-        
-    template_renderizado = template.render(datos)
-        
-    return HttpResponse(template_renderizado)
-    
+    return render(request, "inicio/cursos_v2.html")   
     
 def profesores(request):
     

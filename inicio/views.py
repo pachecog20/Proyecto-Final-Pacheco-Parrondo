@@ -3,8 +3,8 @@ from datetime import datetime
 from django.http import HttpResponse
 from django.template import Template,Context, loader 
 from inicio.models import Curso
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from inicio.forms import CreacionCursoFormulario
 
 
 def menu(request):
@@ -37,31 +37,36 @@ def estudiantes(request):
         template_renderizado = template.render(datos)
         
         return HttpResponse(template_renderizado)
-    
-   
-#v1 def cursos(request):
-    
-   # curso = Curso(nombre="CoderHouse",camada= 333)
-    #print(curso.nombre)
-    #print(curso.camada)
-    #curso.save()
-    
-   # datos = {"curso": curso} 
+      
 
-    #template = loader.get_template(r"inicio/cursos.html")
-        
-    #template_renderizado = template.render(datos)
-        
-    #return HttpResponse(template_renderizado)
+#def cursos(request):
+   # if request.method == "POST":
+    #    curso = Curso(nombre=request.POST['nombre'], camada= request.POST['camada'])
+     #   curso.save()
     
+    #return render(request, "inicio/cursos_v2.html")   
     
+#v3
 def cursos(request):
-    #print(request.POST)
-    curso = Curso(nombre=request.POST["curso"], camada= request.POST["camada"])
-    curso.save()
+    if request.method == "POST":
+        formulario = CreacionCursoFormulario(request.POST)
+        
+        if formulario.is_valid():
+            datos_correctos = formulario.cleaned_data
+        
+            curso = Curso(nombre=datos_correctos['nombre'], camada= datos_correctos['camada'])
+            curso.save()
+            
+            return redirect("inicio:listar_cursos")
     
-    return render(request, "inicio/cursos_v2.html")   
-    
+    formulario = CreacionCursoFormulario()
+    return render(request, "inicio/cursos_v3.html", {"formulario": formulario})       
+
+
+def lista_cursos(request):
+    return render(request, "inicio/lista_cursos.html", )     
+
+
 def profesores(request):
     
     datos = {"nombre": "pepe"}

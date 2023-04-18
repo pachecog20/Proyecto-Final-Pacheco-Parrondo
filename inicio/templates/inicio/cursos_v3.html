@@ -11,15 +11,9 @@
 {% block contenido %}
 <form action={% url 'inicio:Cursos' %} method="POST">
    {% csrf_token %}
-   <p> 
-      Ingrese cursos: 
-      <input type="text" name='nombre' placeholder= "Coder"> 
-   </p>
-   <p>  
-      Ingrese camada: 
-      <input type="number" name='camada' placeholder= "Nro camada"> 
-   </p>
-
+   <table>
+   {{formulario}}
+   </table>
    <button>Crear</button>    
 </form>
 {% endblock contenido %}

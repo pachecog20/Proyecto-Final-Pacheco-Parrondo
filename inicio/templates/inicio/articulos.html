@@ -1,15 +1,15 @@
 {% extends 'genericos/base.html' %}
 
 {% block title_head %}
-<title>Cursos</title>
+<title>Articulos</title>
 {% endblock title_head %}
 
 {% block h1_header  %}
-<h1> Crear cursos </h1>
+<h1> Comprar Articulos </h1>
 {% endblock h1_header %}
 
 {% block contenido %}
-<form action={% url 'inicio:Cursos' %} method="POST">
+<form action={% url 'inicio:Articulos' %} method="POST">
    {% csrf_token %}
    <table>
    {{formulario}}

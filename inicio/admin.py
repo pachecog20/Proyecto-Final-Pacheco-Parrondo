@@ -1,8 +1,5 @@
 from django.contrib import admin
-from inicio.models import Curso, Estudiante, Profesor, Entregable
+from inicio.models import Articulo
 # Register your models here.
 
-admin.site.register(Curso)
-admin.site.register(Estudiante)
-admin.site.register(Profesor)
-admin.site.register(Entregable)
+admin.site.register(Articulo)

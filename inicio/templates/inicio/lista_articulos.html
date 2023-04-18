@@ -1,0 +1,34 @@
+{% extends 'genericos/base.html' %}
+
+{% block title_head %}
+<title>Articulos</title>
+{% endblock title_head %}
+
+{% block h1_header  %}
+<h1> Mostrar Articulos </h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+
+<p>
+   <form action={% url 'inicio:listar_articulos' %}>
+      {{formulario}}
+      <button>Buscar</button>
+
+   </form>
+</p>
+{% if articulos %}
+
+
+{% for articulo in articulos %}
+ <li> 
+    Articulo: {{articulo.nombre}} - Color: {{articulo.color}} - Version: {{articulo.version}} - Marca: {{articulo.marca}}
+ </li>
+    {% endfor %}
+ 
+ {% else %}
+      <h2>No hay articulos seleccionados</h2>
+ {% endif %}
+
+ 
+{% endblock contenido %}

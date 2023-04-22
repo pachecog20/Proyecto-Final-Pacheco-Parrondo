@@ -17,13 +17,22 @@
 
    </form>
 </p>
+
 {% if articulos %}
 
 
 {% for articulo in articulos %}
- <li> 
-    Articulo: {{articulo.nombre}} - Color: {{articulo.color}} - Version: {{articulo.version}} - Marca: {{articulo.marca}}
- </li>
+ <li>  
+      <a class="navbar-brand" href={% url 'inicio:mostrar_articulos' articulo.id %}>{{articulo}} </a>
+      <button>
+         <a class="navbar-brand" href={% url 'inicio:modificar_articulos' articulo.id %}>Modificar</a>
+      </button>
+      <button>
+         <a class="navbar-brand" href={% url 'inicio:eliminar_articulos' articulo.id %}>Eliminar</a>
+      </button>
+      
+</li>
+
     {% endfor %}
  
  {% else %}

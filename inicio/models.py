@@ -7,4 +7,10 @@ class Articulo(models.Model):
     color = models.CharField(max_length=20)
     version = models.IntegerField()
     marca = models.CharField(max_length=20)
+    cantidad_requerida = models.IntegerField(null=True)
     
+    def __str__(self):
+        return f"{self.nombre}, {self.color}, {self.version}, {self.marca}"
+    
+    
+

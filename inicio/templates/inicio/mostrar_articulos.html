@@ -1,0 +1,20 @@
+{% extends 'genericos/base.html' %}
+
+{% block title_head %}
+<title>Articulos</title>
+{% endblock title_head %}
+
+{% block h1_header  %}
+<h1> {{articulo_a_mostrar}} </h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+<ul>
+    <li>Nombre : {{articulo_a_mostrar.nombre}}</li>
+    <li>Color : {{articulo_a_mostrar.color}}</li>
+    <li>Version : {{articulo_a_mostrar.version}}</li>
+    <li>Marca : {{articulo_a_mostrar.marca}}</li>
+    <li>Cantidad Requerida : {{articulo_a_mostrar.cantidad_requerida}}</li>
+</ul>
+ 
+{% endblock contenido %}

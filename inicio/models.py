@@ -5,7 +5,7 @@ from django.db import models
 class Articulo(models.Model):
     nombre = models.CharField(max_length=20)
     color = models.CharField(max_length=20)
-    version = models.IntegerField()
+    version = models.CharField(max_length=20)
     marca = models.CharField(max_length=20)
     cantidad_requerida = models.IntegerField(null=True)
     

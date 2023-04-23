@@ -1,0 +1,17 @@
+{% extends 'genericos/base.html' %}
+
+{% block title_head %}
+<title>Eliminar Articulos</title>
+{% endblock title_head %}
+
+{% block h1_header  %}
+<h1> Eliminar Articulos </h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+<form action={% url 'inicio:eliminar_articulos' articulo.id %} method="POST">
+   {% csrf_token %}
+   <p>Desea realmente eliminar a articulo {{articulo}}</p>
+   <button>Eliminar</button>    
+</form>
+{% endblock contenido %}

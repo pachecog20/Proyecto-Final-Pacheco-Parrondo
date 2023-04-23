@@ -1,0 +1,33 @@
+{% extends 'genericos/base.html' %}
+
+{% block title_head %}
+<title>Articulos</title>
+{% endblock title_head %}
+
+{% block h1_header  %}
+<h1> Mostrar Articulos </h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+
+{% if object_list %}
+{% for articulo in object_list %}
+ <li>  
+      <a class="navbar-brand" href={% url 'inicio:mostrar_articulos' articulo.id %}>{{articulo}} </a>
+      <button>
+         <a class="navbar-brand" href={% url 'inicio:modificar_articulos' articulo.id %}>Modificar</a>
+      </button>
+      <button>
+         <a class="navbar-brand" href={% url 'inicio:eliminar_articulos' articulo.id %}>Eliminar</a>
+      </button>
+      
+</li>
+
+    {% endfor %}
+ 
+ {% else %}
+      <h2>No hay articulos seleccionados</h2>
+ {% endif %}
+
+ 
+{% endblock contenido %}

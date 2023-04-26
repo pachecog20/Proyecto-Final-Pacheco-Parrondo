@@ -25,6 +25,10 @@
                 <a class="navbar-brand" href="{% url 'inicio:Menu' %}">Menu</a>
                 <a class="navbar-brand" href="{% url 'inicio:Articulos' %}">Crear Articulos</a>
                 <a class="navbar-brand" href="{% url 'inicio:listar_articulos' %}">Articulos</a>
+                <a class="btn btn-primary" href={% url 'usuarios:login' %}>Iniciar Sesion</a>
+                <a href="#">{{request.user.username}} </a> 
+                <a class="btn btn-primary" href={% url 'usuarios:registro' %}>Registrarse</a>
+                <a class="btn btn-primary" href={% url 'usuarios:logout' %}>Cerrar Sesion</a>
             </div>
         </nav>
         <!-- Masthead-->

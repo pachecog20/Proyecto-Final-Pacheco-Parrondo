@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.shortcuts import redirect
+from usuarios.forms import MiFormularioDeCreacion
 # Create your views here.
 
 def login(request):
@@ -28,7 +29,7 @@ def login(request):
 def registro(request):
     
     if request.method == "POST":
-        formulario = UserCreationForm(request.POST)
+        formulario = MiFormularioDeCreacion(request.POST)
          
         if formulario.is_valid():
             formulario.save()
@@ -36,7 +37,7 @@ def registro(request):
         else:
             return render(request, "usuarios/registro.html", {"formulario": formulario})
      
-    formulario = UserCreationForm()
+    formulario = MiFormularioDeCreacion()
     return render(request, "usuarios/registro.html", {"formulario": formulario})
         
     

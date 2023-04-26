@@ -5,10 +5,11 @@ from django.template import Template,Context, loader
 from inicio.models import Articulo
 from django.shortcuts import render, redirect
 from inicio.forms import CreacionArticuloFormulario, BuscarArticulo, ModificarArticuloFormulario
+
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def menu(request):
     return render(request, "inicio/menu.html")
@@ -81,13 +82,13 @@ class CrearArticulos(CreateView):
     success_url = "/inicio/Articulos/"
     fields = ["nombre", "color", "version", "marca"]
     
-class ModificarArticulos(UpdateView):
+class ModificarArticulos(LoginRequiredMixin,UpdateView):
     model = Articulo
     template_name = "inicio/CBV/modificar_articulos.html"
     success_url = "/inicio/Articulos/"
     fields = ["nombre", "color", "version", "marca", "cantidad_requerida"]
     
-class EliminarArticulos(DeleteView):
+class EliminarArticulos(LoginRequiredMixin,DeleteView):
     model = Articulo
     template_name = "inicio/CBV/eliminar_articulos.html"
     success_url = "/inicio/Articulos/"

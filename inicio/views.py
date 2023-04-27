@@ -5,7 +5,7 @@ from django.template import Template,Context, loader
 from inicio.models import Articulo
 from django.shortcuts import render, redirect
 from inicio.forms import CreacionArticuloFormulario, BuscarArticulo, ModificarArticuloFormulario
-
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -79,19 +79,19 @@ class ListaArticulos(ListView):
 class CrearArticulos(CreateView):
     model = Articulo
     template_name = "inicio/CBV/crear_articulos.html"
-    success_url = "/inicio/Articulos/"
+    success_url = reverse_lazy("inicio:listar_articulos")
     fields = ["nombre", "color", "version", "marca"]
     
 class ModificarArticulos(LoginRequiredMixin,UpdateView):
     model = Articulo
     template_name = "inicio/CBV/modificar_articulos.html"
-    success_url = "/inicio/Articulos/"
+    success_url = reverse_lazy("inicio:listar_articulos")
     fields = ["nombre", "color", "version", "marca", "cantidad_requerida"]
     
 class EliminarArticulos(LoginRequiredMixin,DeleteView):
     model = Articulo
     template_name = "inicio/CBV/eliminar_articulos.html"
-    success_url = "/inicio/Articulos/"
+    success_url = reverse_lazy("inicio:listar_articulos")
     
 class MostrarArticulo(DetailView):
     model = Articulo

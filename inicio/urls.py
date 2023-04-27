@@ -4,7 +4,7 @@ from inicio import views
 app_name = "inicio"
 
 urlpatterns = [
-    path('', views.menu, name ='Menu'),
+    path('', views.menu, name ='inicio'),
     
     
     

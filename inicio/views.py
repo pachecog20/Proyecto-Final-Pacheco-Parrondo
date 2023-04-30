@@ -1,10 +1,8 @@
 
-from datetime import datetime
-from django.http import HttpResponse
-from django.template import Template,Context, loader 
+
 from inicio.models import Articulo
-from django.shortcuts import render, redirect
-from inicio.forms import CreacionArticuloFormulario, BuscarArticulo, ModificarArticuloFormulario
+from django.shortcuts import render
+
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -22,7 +20,7 @@ class ListaArticulos(ListView):
     model = Articulo
     template_name = "inicio/CBV/lista_articulos.html"
     
-class CrearArticulos(CreateView):
+class CrearArticulos(LoginRequiredMixin,CreateView):
     model = Articulo
     template_name = "inicio/CBV/crear_articulos.html"
     success_url = reverse_lazy("inicio:listar_articulos")

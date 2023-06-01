@@ -15,8 +15,12 @@
     <li>Version : {{articulo.version  | safe}}</li>
     <li>Marca : {{articulo.marca}}</li>
     <li>Cantidad Requerida : {{articulo.cantidad_requerida}}</li>
-   
+    {% if articulo.imagen and articulo.imagen.url %}
+    <img src="{{ articulo.imagen.url }}" alt="" height="120px">
+    {% else %}
+    <p>No hay imagen seleccionada</p>
+    {% endif %}
     
 </ul>
- 
+
 {% endblock contenido %}

@@ -8,6 +8,7 @@ class Articulo(models.Model):
     version = RichTextField()
     marca = models.CharField(max_length=20)
     cantidad_requerida = models.IntegerField(null=True)
+    imagen = models.ImageField(upload_to='articulos', null=True, blank=True)
    
     
     def __str__(self):

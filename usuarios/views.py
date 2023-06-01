@@ -72,3 +72,23 @@ class CambioContrasenia(PasswordChangeView):
     template_name = 'usuarios/cambiar_contrasenia.html'
     success_url = reverse_lazy('usuarios:editar_perfil')
     
+    
+@login_required       
+def datos_perfil(request):
+    
+    if request.method == "POST":
+        formulario = EdicionDatosUsuario(request.POST, request.FILES , instance=request.user)
+         
+        if formulario.is_valid():
+            if formulario.cleaned_data.get('avatar'):
+                request.user.informacionextra.avatar = formulario.cleaned_data.get("avatar")
+            if formulario.cleaned_data.get('city'):
+                request.user.informacionextra.city = formulario.cleaned_data.get("city")
+            request.user.informacionextra.save()
+            formulario.save()
+            return redirect("inicio:inicio")
+        else:
+            return render(request, "usuarios/datos_perfil.html", {"formulario": formulario})
+     
+    formulario = EdicionDatosUsuario(initial={'avatar': request.user.informacionextra.avatar, 'city': request.user.informacionextra.city}, instance=request.user)
+    return render(request, "usuarios/datos_perfil.html", {"formulario": formulario})

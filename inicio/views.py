@@ -24,13 +24,13 @@ class CrearArticulos(LoginRequiredMixin,CreateView):
     model = Articulo
     template_name = "inicio/CBV/crear_articulos.html"
     success_url = reverse_lazy("inicio:listar_articulos")
-    fields = ["nombre", "color", "version", "marca"]
+    fields = ["nombre", "color", "version", "marca", "imagen"]
     
 class ModificarArticulos(LoginRequiredMixin,UpdateView):
     model = Articulo
     template_name = "inicio/CBV/modificar_articulos.html"
     success_url = reverse_lazy("inicio:listar_articulos")
-    fields = ["nombre", "color", "version", "marca", "cantidad_requerida"]
+    fields = ["nombre", "color", "version", "marca", "cantidad_requerida", "imagen"]
     
 class EliminarArticulos(LoginRequiredMixin,DeleteView):
     model = Articulo

@@ -56,13 +56,15 @@ def editar_perfil(request):
         if formulario.is_valid():
             if formulario.cleaned_data.get('avatar'):
                 request.user.informacionextra.avatar = formulario.cleaned_data.get("avatar")
+            if formulario.cleaned_data.get('city'):
+                request.user.informacionextra.city = formulario.cleaned_data.get("city")
             request.user.informacionextra.save()
             formulario.save()
             return redirect("inicio:inicio")
         else:
             return render(request, "usuarios/editar_perfil.html", {"formulario": formulario})
      
-    formulario = EdicionDatosUsuario(initial={'avatar': request.user.informacionextra.avatar}, instance=request.user)
+    formulario = EdicionDatosUsuario(initial={'avatar': request.user.informacionextra.avatar, 'city': request.user.informacionextra.city}, instance=request.user)
     return render(request, "usuarios/editar_perfil.html", {"formulario": formulario})
 
     

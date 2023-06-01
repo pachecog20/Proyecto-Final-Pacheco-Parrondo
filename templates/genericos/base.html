@@ -29,8 +29,10 @@
                 {% if request.user.informacionextra.avatar %}
                 <img src={{request.user.informacionextra.avatar.url}} alt="" height="40px">
                 {% endif %}
-                <a href={% url 'usuarios:editar_perfil' %}>{{request.user.username}} </a> 
+                
+                <a class="navbar-brand" href={% url 'usuarios:datos_perfil' %}>Datos Perfil</a>
                 <a class="btn btn-primary" href={% url 'usuarios:logout' %}>Cerrar Sesion</a>
+
                 {% else %}
                 
                     <a class="btn btn-primary" href={% url 'usuarios:login' %}>Iniciar Sesion</a>

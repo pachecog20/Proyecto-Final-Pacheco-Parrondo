@@ -1,0 +1,25 @@
+{% extends 'genericos/base.html' %}
+
+{% block title_head %}
+<title>Datos Perfil</title>
+{% endblock title_head %}
+
+{% block h1_header  %}
+<h1 class="mb-5"> Datos Perfil</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+
+<ul>
+    <li>Email : {{user.email}}</li>
+    <li>Nombre : {{user.first_name}}</li>
+    <li>Apellido : {{user.last_name}}</li>
+    <li>Avatar : <img src={{request.user.informacionextra.avatar.url}} alt="" height="40px"></li>
+    <li>Ciudad : {{user.informacionextra.city}}</li>
+   
+    
+</ul>
+    <a href={% url 'usuarios:editar_perfil' %}>{{request.user.username}} </a> <p>Editar Perfil</p>
+    
+{% endblock contenido %}
+

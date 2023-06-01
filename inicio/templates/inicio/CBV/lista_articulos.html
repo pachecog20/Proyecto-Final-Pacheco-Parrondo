@@ -11,20 +11,13 @@
 {% block contenido %}
 
 {% if object_list %}
-{% for articulo in object_list %}
- <li>  
-      <a class="navbar-brand" href={% url 'inicio:mostrar_articulos' articulo.id %}>{{articulo}} </a>
-      <button>
-         <a class="navbar-brand" href={% url 'inicio:modificar_articulos' articulo.id %}>Modificar</a>
-      </button>
-      <button>
-         <a class="navbar-brand" href={% url 'inicio:eliminar_articulos' articulo.id %}>Eliminar</a>
-      </button>
-      
-</li>
-
+<ul>
+    {% for articulo in object_list %}
+    <li><a href={% url 'inicio:mostrar_articulos' articulo.id %}>{{articulo}}</a></li>
+    <a href={% url 'inicio:modificar_articulos' articulo.id %}>Modificar</a> . <a href={% url 'inicio:eliminar_articulos' articulo.id %}>Eliminar</a>
     {% endfor %}
- 
+</ul>
+
  {% else %}
       <h2>No hay articulos seleccionados</h2>
  {% endif %}
